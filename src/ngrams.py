@@ -1,3 +1,6 @@
+import string
+import re
+
 def ngrams(input, n):
   output = {}
   if (input == ''):
@@ -12,3 +15,4 @@ def ngrams(input, n):
 
 # for i in range(5):
 #     print(ngrams("salut ça va je vais bien? \n salut ça va et toi ?", i))
+
