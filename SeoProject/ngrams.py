@@ -7,3 +7,5 @@ def ngrams(input, n):
     output[g] += 1
   return output
 
+# for i in range(5):
+#     print(ngrams("salut ça va je vais bien? \n salut ça va et toi ?", i))
