@@ -20,3 +20,8 @@ SEO
    --DE
      |
      -- Deustch files here
+
+
+## Usage ##
+
+python seo.py
