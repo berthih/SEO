@@ -1,7 +1,5 @@
-from src.ngrams import *
+from ngrams import *
 import operator
-from itertools import islice
-
 
 
 def main():
@@ -9,24 +7,25 @@ def main():
     #../ressources/DE/ for deutsch
     #../ressources/EN/ for english
     #../ressources/FR/ for french
-    dirname = '../ressources/FR/'
 
-    fr = parseLanguage('../ressources/FR/')
-    dirname = '../ressources/EN/'
-    en = parseLanguage(dirname)
-    dirname = '../ressources/DE/'
-    de = parseLanguage(dirname)
+    dirnameEN = '../ressources/EN/'
+    dirnameFR = '../ressources/FR/'
+    dirnameDE = '../ressources/DE/'
 
+    fr = parseLanguage(dirnameFR)
+    en = parseLanguage(dirnameEN)
+    de = parseLanguage(dirnameDE)
+
+    # get only 100 most present elt
     fr = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-100]
-    print(fr)
+    # print(fr)
     frTwo = []
 
-    with open('../ressources/FR/europarl-v7.fr-en.fr') as myfile:
-        head = list(islice(myfile, 10000))
+    listOccur = countOccur(dirnameFR, fr)
+    for elt in listOccur:
+        print(elt.str + ' ' + str(elt.value) + ' ' + str(elt.nbOccurence))
 
-    for gram in fr:
-        if gram[0] in ''.join(head):
-            frTwo.append(gramOccurence(gram[0], gram[1], 1))
+
 
 if __name__ == "__main__":
     main()

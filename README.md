@@ -1,4 +1,4 @@
-This project was done by Hadrien Berthier and Korim Daoud, there is no third member. Berthier is the best, there is no need for a 3rd member anyway (he's already aking soooo much space)
+This project was done by Hadrien Berthier and Korim Daoud, there is no third member.
 
 ## Ressources ##
 

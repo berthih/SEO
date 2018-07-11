@@ -2,6 +2,7 @@ import string
 import re
 import sys
 import os
+from itertools import islice
 
 class language:
     oneGram = {}
@@ -23,6 +24,7 @@ class gramOccurence:
         self.nbOccurence = occurence
         self.value = value
 
+# return the n-gram of a string
 def ngrams(input, n, output):
   if (input == ''):
     return output
@@ -33,6 +35,7 @@ def ngrams(input, n, output):
     output[g] += 1
   return output
 
+# return the 1-gram, 2-gram and 3-gram of all the files in a directory (that represents a language)
 def parseLanguage(dirname):
     lang = language({}, {}, {})
     for filename in os.listdir(dirname):
@@ -49,4 +52,17 @@ def parseLanguage(dirname):
             i += 1
     return lang
 
+# count occurence given a directory and a n-gram
+def countOccur(dirname, ngram):
+    occurList = []
+    for elt in ngram:
+        occur = 0
+        for filename in os.listdir(dirname):
+            with open(dirname + filename, 'r') as myfile:
+                head = list(islice(myfile, 10000))
+            if elt[0] in ''.join(head):
+                occur += 1
+        occurList.append(gramOccurence(elt[0], elt[1], occur))
+        # update value as tf-idf?
+    return occurList
 
