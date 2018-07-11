@@ -6,3 +6,4 @@ def ngrams(input, n):
     output.setdefault(g, 0)
     output[g] += 1
   return output
+
