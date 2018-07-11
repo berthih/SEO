@@ -1,8 +1,7 @@
 import string
 import re
 
-def ngrams(input, n):
-  output = {}
+def ngrams(input,  n, output):
   if (input == ''):
     return output
   input = input.split(' ')
