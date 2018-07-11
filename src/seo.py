@@ -1,5 +1,4 @@
-import sys
-import os
+
 from ngrams import *
 
 def main():
@@ -8,27 +7,17 @@ def main():
     #../ressources/EN/ for english
     #../ressources/FR/ for french
     dirname = '../ressources/FR/'
-    for filename in os.listdir(dirname):
-        print(filename + '\n')
-        file = open(dirname + filename, 'r')
-        i = 0
-        oneGram = {}
-        twoGram = {}
-        threeGram = {}
-        for line in file:
-            #print(line + '\n')
-            oneGram = ngrams(line, 1, oneGram)
-            twoGram = ngrams(line, 2, twoGram)
-            threeGram = ngrams(line, 3, threeGram)
-            if (i > 20):
-                break
-            i += 1
-        print('1-gram :\n')
-        print(oneGram)
-        print('2-gram :\n')
-        print(twoGram)
-        print('3-gram :\n')
-        print(threeGram)
+    fr = parseLanguage('../ressources/FR/')
+    dirname = '../ressources/EN/'
+    en = parseLanguage(dirname)
+    dirname = '../ressources/DE/'
+    de = parseLanguage(dirname)
+
+    print(fr.threeGram)
+    print('\n')
+    print(de.threeGram)
+    print('\n')
+    print(en.threeGram)
 
 if __name__ == "__main__":
     main()
