@@ -34,7 +34,7 @@ def parseLanguage(dirname):
             lang.twoGram = ngrams(line, 2, lang.twoGram)
             lang.threeGram = ngrams(line, 3, lang.threeGram)
             # because potato pc, taking only 20 lines
-            if (i > 20):
+            if (i > 10000):
                 break
             i += 1
     return lang

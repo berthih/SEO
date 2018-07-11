@@ -18,12 +18,14 @@ def main():
     dirname = '../ressources/DE/'
     de = parseLanguage(dirname)
 
-    print(fr.threeGram)
-    print('\n')
-    print(de.threeGram)
-    print('\n')
-    print(en.threeGram)
-# reversed(sorted(oneGram.items(), key=operator.itemgetter(1)))
+    # print(fr.threeGram)
+    fr = sorted(fr.threeGram.items(), key=operator.itemgetter(1))
+    print(fr)
+    # print('\n')
+    # print(de.threeGram)
+    # print('\n')
+    # print(en.threeGram)
+#
 
 if __name__ == "__main__":
     main()
