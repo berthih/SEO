@@ -1,8 +1,7 @@
-
-import sys
-import os
 from src.ngrams import *
 import operator
+from itertools import islice
+
 
 
 def main():
@@ -18,14 +17,16 @@ def main():
     dirname = '../ressources/DE/'
     de = parseLanguage(dirname)
 
-    # print(fr.threeGram)
-    fr = sorted(fr.threeGram.items(), key=operator.itemgetter(1))
+    fr = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-100]
     print(fr)
-    # print('\n')
-    # print(de.threeGram)
-    # print('\n')
-    # print(en.threeGram)
-#
+    frTwo = []
+
+    with open('../ressources/FR/europarl-v7.fr-en.fr') as myfile:
+        head = list(islice(myfile, 10000))
+
+    for gram in fr:
+        if gram[0] in ''.join(head):
+            frTwo.append(gramOccurence(gram[0], gram[1], 1))
 
 if __name__ == "__main__":
     main()

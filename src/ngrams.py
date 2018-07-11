@@ -13,6 +13,16 @@ class language:
       self.twoGram = twoGram
       self.threeGram = threeGram
 
+class gramOccurence:
+    str = ""
+    value = 0
+    nbOccurence = 0
+
+    def __init__(self, str, value, occurence):
+        self.str = str
+        self.nbOccurence = occurence
+        self.value = value
+
 def ngrams(input, n, output):
   if (input == ''):
     return output
@@ -38,3 +48,5 @@ def parseLanguage(dirname):
                 break
             i += 1
     return lang
+
+
