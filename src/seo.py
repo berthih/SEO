@@ -4,7 +4,9 @@ from ngrams import *
 
 def main():
     print('parsing directory ressources')
-
+    #../ressources/DE/ for deutsch
+    #../ressources/EN/ for english
+    #../ressources/FR/ for french
     dirname = '../ressources/FR/'
     for filename in os.listdir(dirname):
         print(filename + '\n')
