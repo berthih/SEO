@@ -1,5 +1,9 @@
 
-from ngrams import *
+import sys
+import os
+from src.ngrams import *
+import operator
+
 
 def main():
     print('parsing directory ressources')
@@ -7,6 +11,7 @@ def main():
     #../ressources/EN/ for english
     #../ressources/FR/ for french
     dirname = '../ressources/FR/'
+
     fr = parseLanguage('../ressources/FR/')
     dirname = '../ressources/EN/'
     en = parseLanguage(dirname)
@@ -18,6 +23,7 @@ def main():
     print(de.threeGram)
     print('\n')
     print(en.threeGram)
+# reversed(sorted(oneGram.items(), key=operator.itemgetter(1)))
 
 if __name__ == "__main__":
     main()

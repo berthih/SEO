@@ -23,14 +23,6 @@ def ngrams(input, n, output):
     output[g] += 1
   return output
 
-# output = {}
-# for i in range(3):
-#     print(ngrams("salut ça va? je vais, bien? \n salut. ça va et toi ?", i, output))
-# print()
-# for i in range(3):
-#     print(ngrams("salut ça. va je vais bien? \n salut ça va. et toi?", i, output))
-
-
 def parseLanguage(dirname):
     lang = language({}, {}, {})
     for filename in os.listdir(dirname):
