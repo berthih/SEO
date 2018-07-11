@@ -1,6 +1,6 @@
 import sys
 import os
-
+import ngrams
 
 def main():
     if len(sys.argv) < 2:
