@@ -1,6 +1,9 @@
 def ngrams(input, n):
-  input = input.split(' ')
   output = {}
+  if (input == ''):
+    return output
+  input = input.split(' ')
+
   for i in range(len(input)-n+1):
     g = ' '.join(input[i:i+n])
     output.setdefault(g, 0)
