@@ -21,7 +21,6 @@ SEO
      |
      -- Deustch files here
 
-
 ## Usage ##
 
-python seo.py
+python src/seo.py
