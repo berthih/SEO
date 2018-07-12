@@ -69,6 +69,27 @@ def load():
     return dict(fr_oneGram), dict(fr_twoGram), dict(fr_threeGram), dict(de_oneGram), dict(de_twoGram), dict(de_threeGram), dict(en_oneGram), dict(en_twoGram), dict(en_threeGram)
 
 def save(fr, de, en):
+    if os.path.isfile('../saved_data/French_oneGram'):
+        os.remove('../saved_data/French_oneGram')
+    if os.path.isfile('../saved_data/French_twoGram'):
+        os.remove('../saved_data/French_twoGram')
+    if os.path.isfile('../saved_data/French_threeGram'):
+        os.remove('../saved_data/French_threeGram')
+
+    if os.path.isfile('../saved_data/Deutsch_oneGram'):
+        os.remove('../saved_data/Deutsch_oneGram')
+    if os.path.isfile('../saved_data/Deutsch_twoGram'):
+        os.remove('../saved_data/Deutsch_twoGram')
+    if os.path.isfile('../saved_data/Deutsch_threeGram'):
+        os.remove('../saved_data/Deutsch_threeGram')
+
+    if os.path.isfile('../saved_data/English_oneGram'):
+        os.remove('../saved_data/English_oneGram')
+    if os.path.isfile('../saved_data/English_twoGram'):
+        os.remove('../saved_data/English_twoGram')
+    if os.path.isfile('../saved_data/English_threeGram'):
+        os.remove('../saved_data/English_threeGram')
+
     # saving the n-gram struct from each languages on the disk
     frF_oneGram = open('../saved_data/French_oneGram', 'ab')
     frF_twoGram = open('../saved_data/French_twoGram', 'ab')
@@ -81,18 +102,6 @@ def save(fr, de, en):
     enF_oneGram = open('../saved_data/English_oneGram', 'ab')
     enF_twoGram = open('../saved_data/English_twoGram', 'ab')
     enF_threeGram = open('../saved_data/English_threeGram', 'ab')
-
-    os.remove('../saved_data/French_oneGram')
-    os.remove('../saved_data/French_twoGram')
-    os.remove('../saved_data/French_threeGram')
-
-    os.remove('../saved_data/Deuts ch_oneGram')
-    os.remove('../saved_data/Deutsch_twoGram')
-    os.remove('../saved_data/Deutsch_threeGram')
-
-    os.remove('../saved_data/English_oneGram')
-    os.remove('../saved_data/English_twoGram')
-    os.remove('../saved_data/English_threeGram')
 
     fr_oneGram = sorted(fr.oneGram.items(), key=operator.itemgetter(1))[::-300]
     fr_twoGram = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-300]
