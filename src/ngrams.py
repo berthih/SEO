@@ -76,13 +76,11 @@ def countOccur(dirname, ngram):
     return occurList
 
 
-def detectLanguage(file, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
-    lang = language({}, {}, {})
-    lang = parseFile(file, lang)
+def detectLanguage(text, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
     countfr = 0
     counten = 0
     countde = 0
-    for i in lang.oneGram:
+    for i in text.oneGram:
         if i in fr1:
             print(i)
             countfr += 1
@@ -93,7 +91,7 @@ def detectLanguage(file, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
             print(i)
             countde += 1
         #search in french, english and deutch one gram and return the highest rate
-    for i in lang.twoGram:
+    for i in text.twoGram:
         if i in fr2:
             print(i)
             countfr += 2
@@ -104,7 +102,7 @@ def detectLanguage(file, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
             print(i)
             countde += 2
         # search in french, english and deutch two gram and return the highest rate
-    for i in lang.threeGram:
+    for i in text.threeGram:
         if i in fr3:
             countfr += 3
         if i in en3:
@@ -115,5 +113,25 @@ def detectLanguage(file, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
             countde += 3
         # search in french, english and deutch three gram and return the highest rate
     print("fr:", countfr, "en:", counten, "de:", countde)
-    return max(countde, counten, countfr)
+    lang = max(countde, counten, countfr)
+    if lang == countfr:
+        return fr1, fr2, fr3
+    if lang == countde:
+        return de1, de2, de3
+    if lang == counten:
+        return en1, en2, en3
     #compare all rates and return langage detected
+
+def predictWord(text, lang1, lang2, lang3):
+    #print(lang3)
+    keyList = list(text.twoGram.keys())
+    last2Gram = keyList[len(keyList) - 1]
+    # to remove \n
+    last2Gram = last2Gram[:-1]
+    print(last2Gram)
+    for i in list(lang3.keys()):
+        if last2Gram in i:
+            print('A match is: ' + i)
+
+
+

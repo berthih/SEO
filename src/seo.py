@@ -12,21 +12,26 @@ def main():
     dirnameFR = '../ressources/FR/'
     dirnameDE = '../ressources/DE/'
 
-    fr = parseLanguage(dirnameFR)
-    en = parseLanguage(dirnameEN)
-    de = parseLanguage(dirnameDE)
+    parse = input('Do you wish to re-create the n-gram by parsing the files in /ressources? (y/n)\n')
+
+    if parse == 'y':
+        fr = parseLanguage(dirnameFR)
+        en = parseLanguage(dirnameEN)
+        de = parseLanguage(dirnameDE)
 
     inputFile = input('Enter an input file to detect language from:\n')
     file = open(inputFile, 'r')
 
-    save(fr, de, en)
-
+    #save(fr, de, en)
 
     fr1, fr2, fr3, de1, de2, de3, en1, en2, en3 = load()
 
-    print(len(fr1), fr1)
-    print(len(de2), de2)
-    detectLanguage(file, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3)
+    #print(len(fr1), fr1)
+    #print(len(de2), de2)
+    text = language({}, {}, {})
+    text = parseFile(file, text)
+    lang1, lang2, lang3 = detectLanguage(text, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3)
+    predictWord(text, lang1, lang2, lang3)
 
 def load():
     # saving the n-gram struct from each languages on the disk
