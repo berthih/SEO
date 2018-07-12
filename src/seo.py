@@ -1,4 +1,4 @@
-from src.ngrams import *
+from ngrams import *
 import operator
 import marshal
 
@@ -16,17 +16,17 @@ def main():
     en = parseLanguage(dirnameEN)
     de = parseLanguage(dirnameDE)
 
-    file = open(dirnameFR + "test.fr", 'r')
-
-    # get only 100 most present elt
-    #fr = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-100]
+    inputFile = input('Enter an input file to detect language from:\n')
+    file = open(inputFile, 'r')
 
     save(fr, de, en)
+
+
     fr1, fr2, fr3, de1, de2, de3, en1, en2, en3 = load()
+
     print(len(fr1), fr1)
     print(len(de2), de2)
     detectLanguage(file, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3)
-
 
 def load():
     # saving the n-gram struct from each languages on the disk
@@ -41,6 +41,17 @@ def load():
     enF_oneGram = open('../saved_data/English_oneGram', 'rb')
     enF_twoGram = open('../saved_data/English_twoGram', 'rb')
     enF_threeGram = open('../saved_data/English_threeGram', 'rb')
+    os.remove(frF_oneGram)
+    os.remove(frF_twoGram)
+    os.remove(frF_threeGram)
+
+    os.remove(deF_oneGram)
+    os.remove(deF_twoGram)
+    os.remove(deF_threeGram)
+
+    os.remove(enF_oneGram)
+    os.remove(enF_twoGram)
+    os.remove(enF_threeGram)
 
     fr_oneGram = marshal.load(frF_oneGram)
     fr_twoGram = marshal.load(frF_twoGram)
