@@ -16,27 +16,31 @@ def main():
     en = parseLanguage(dirnameEN)
     de = parseLanguage(dirnameDE)
 
+    file = open(dirnameDE + "test.de", 'r')
+    detectLanguage(file, fr, en, de)
+
     # get only 100 most present elt
-    # fr = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-100]
+    #fr = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-100]
     # print(fr)
-    frTwo = []
 
     save(fr, de, en)
+    fr1, fr2, fr3, de1, de2, de3, en1, en2, en3 = load()
+    
 
 
 def load():
     # saving the n-gram struct from each languages on the disk
-    frF_oneGram = open('../saved_data/French_oneGram', 'ab')
-    frF_twoGram = open('../saved_data/French_twoGram', 'ab')
-    frF_threeGram = open('../saved_data/French_threeGram', 'ab')
+    frF_oneGram = open('../saved_data/French_oneGram', 'rb')
+    frF_twoGram = open('../saved_data/French_twoGram', 'rb')
+    frF_threeGram = open('../saved_data/French_threeGram', 'rb')
 
-    deF_oneGram = open('../saved_data/Deutsch_oneGram', 'ab')
-    deF_twoGram = open('../saved_data/Deutsch_twoGram', 'ab')
-    deF_threeGram = open('../saved_data/Deutsch_threeGram', 'ab')
+    deF_oneGram = open('../saved_data/Deutsch_oneGram', 'rb')
+    deF_twoGram = open('../saved_data/Deutsch_twoGram', 'rb')
+    deF_threeGram = open('../saved_data/Deutsch_threeGram', 'rb')
 
-    enF_oneGram = open('../saved_data/English_oneGram', 'ab')
-    enF_twoGram = open('../saved_data/English_twoGram', 'ab')
-    enF_threeGram = open('../saved_data/English_threeGram', 'ab')
+    enF_oneGram = open('../saved_data/English_oneGram', 'rb')
+    enF_twoGram = open('../saved_data/English_twoGram', 'rb')
+    enF_threeGram = open('../saved_data/English_threeGram', 'rb')
 
     fr_oneGram = marshal.load(frF_oneGram)
     fr_twoGram = marshal.load(frF_twoGram)

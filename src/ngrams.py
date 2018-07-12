@@ -76,16 +76,45 @@ def countOccur(dirname, ngram):
     return occurList
 
 
-def detectLanguage(file):
+def detectLanguage(file, langfr, langen, langde):
     lang = language({}, {}, {})
     lang = parseFile(file, lang)
+    countfr = 0
+    counten = 0
+    countde = 0
     for i in lang.oneGram:
+        if i in langfr.oneGram:
+            print(i)
+            countfr += 1
+        if i in langen.oneGram:
+            print(i)
+            counten += 1
+        if i in langde.oneGram:
+            print(i)
+            countde += 1
         #search in french, english and deutch one gram and return the highest rate
-        return
     for i in lang.twoGram:
+        if i in langfr.twoGram:
+            print(i)
+            countfr += 2
+        if i in langen.twoGram:
+            print(i)
+            counten += 2
+        if i in langde.twoGram:
+            print(i)
+            countde += 2
         # search in french, english and deutch two gram and return the highest rate
-        return
     for i in lang.threeGram:
+        if i in langfr.threeGram:
+            print(i)
+            countfr += 3
+        if i in langen.threeGram:
+            print(i)
+            counten += 3
+        if i in langde.threeGram:
+            print(i)
+            countde += 3
         # search in french, english and deutch three gram and return the highest rate
-        return
+    print("fr:", countfr, "en:", counten, "de:", countde)
+    return max(countde, counten, countfr)
     #compare all rates and return langage detected
