@@ -42,18 +42,6 @@ def load():
     enF_twoGram = open('../saved_data/English_twoGram', 'rb')
     enF_threeGram = open('../saved_data/English_threeGram', 'rb')
 
-    os.remove('../saved_data/French_oneGram')
-    os.remove('../saved_data/French_twoGram')
-    os.remove('../saved_data/French_threeGram')
-
-    os.remove('../saved_data/Deutsch_oneGram')
-    os.remove('../saved_data/Deutsch_twoGram')
-    os.remove('../saved_data/Deutsch_threeGram')
-
-    os.remove('../saved_data/English_oneGram')
-    os.remove('../saved_data/English_twoGram')
-    os.remove('../saved_data/English_threeGram')
-
     fr_oneGram = marshal.load(frF_oneGram)
     fr_twoGram = marshal.load(frF_twoGram)
     fr_threeGram = marshal.load(frF_threeGram)
@@ -93,6 +81,18 @@ def save(fr, de, en):
     enF_oneGram = open('../saved_data/English_oneGram', 'ab')
     enF_twoGram = open('../saved_data/English_twoGram', 'ab')
     enF_threeGram = open('../saved_data/English_threeGram', 'ab')
+
+    os.remove('../saved_data/French_oneGram')
+    os.remove('../saved_data/French_twoGram')
+    os.remove('../saved_data/French_threeGram')
+
+    os.remove('../saved_data/Deuts ch_oneGram')
+    os.remove('../saved_data/Deutsch_twoGram')
+    os.remove('../saved_data/Deutsch_threeGram')
+
+    os.remove('../saved_data/English_oneGram')
+    os.remove('../saved_data/English_twoGram')
+    os.remove('../saved_data/English_threeGram')
 
     fr_oneGram = sorted(fr.oneGram.items(), key=operator.itemgetter(1))[::-300]
     fr_twoGram = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-300]
