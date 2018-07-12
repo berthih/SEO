@@ -1,4 +1,4 @@
-from ngrams import *
+from src.ngrams import *
 import operator
 
 
@@ -24,7 +24,6 @@ def main():
     listOccur = countOccur(dirnameFR, fr)
     for elt in listOccur:
         print(elt.str + ' ' + str(elt.value) + ' ' + str(elt.nbOccurence))
-
 
 
 if __name__ == "__main__":
