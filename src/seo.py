@@ -41,17 +41,18 @@ def load():
     enF_oneGram = open('../saved_data/English_oneGram', 'rb')
     enF_twoGram = open('../saved_data/English_twoGram', 'rb')
     enF_threeGram = open('../saved_data/English_threeGram', 'rb')
-    os.remove(frF_oneGram)
-    os.remove(frF_twoGram)
-    os.remove(frF_threeGram)
 
-    os.remove(deF_oneGram)
-    os.remove(deF_twoGram)
-    os.remove(deF_threeGram)
+    os.remove('../saved_data/French_oneGram')
+    os.remove('../saved_data/French_twoGram')
+    os.remove('../saved_data/French_threeGram')
 
-    os.remove(enF_oneGram)
-    os.remove(enF_twoGram)
-    os.remove(enF_threeGram)
+    os.remove('../saved_data/Deutsch_oneGram')
+    os.remove('../saved_data/Deutsch_twoGram')
+    os.remove('../saved_data/Deutsch_threeGram')
+
+    os.remove('../saved_data/English_oneGram')
+    os.remove('../saved_data/English_twoGram')
+    os.remove('../saved_data/English_threeGram')
 
     fr_oneGram = marshal.load(frF_oneGram)
     fr_twoGram = marshal.load(frF_twoGram)
