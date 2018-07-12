@@ -68,7 +68,7 @@ def countOccur(dirname, ngram):
         occur = 0
         for filename in os.listdir(dirname):
             with open(dirname + filename, 'r') as myfile:
-                head = list(islice(myfile, 50000))
+                head = list(islice(myfile, 10000))
             if elt[0] in ''.join(head):
                 occur += 1
         occurList.append(gramOccurence(elt[0], elt[1], occur))
@@ -76,42 +76,41 @@ def countOccur(dirname, ngram):
     return occurList
 
 
-def detectLanguage(file, langfr, langen, langde):
+def detectLanguage(file, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
     lang = language({}, {}, {})
     lang = parseFile(file, lang)
     countfr = 0
     counten = 0
     countde = 0
     for i in lang.oneGram:
-        if i in langfr.oneGram:
+        if i in fr1:
             print(i)
             countfr += 1
-        if i in langen.oneGram:
+        if i in en1:
             print(i)
             counten += 1
-        if i in langde.oneGram:
+        if i in de1:
             print(i)
             countde += 1
         #search in french, english and deutch one gram and return the highest rate
     for i in lang.twoGram:
-        if i in langfr.twoGram:
+        if i in fr2:
             print(i)
             countfr += 2
-        if i in langen.twoGram:
+        if i in en2:
             print(i)
             counten += 2
-        if i in langde.twoGram:
+        if i in de2:
             print(i)
             countde += 2
         # search in french, english and deutch two gram and return the highest rate
     for i in lang.threeGram:
-        if i in langfr.threeGram:
-            print(i)
+        if i in fr3:
             countfr += 3
-        if i in langen.threeGram:
+        if i in en3:
             print(i)
             counten += 3
-        if i in langde.threeGram:
+        if i in de3:
             print(i)
             countde += 3
         # search in french, english and deutch three gram and return the highest rate

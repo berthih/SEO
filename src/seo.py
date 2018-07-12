@@ -16,16 +16,16 @@ def main():
     en = parseLanguage(dirnameEN)
     de = parseLanguage(dirnameDE)
 
-    file = open(dirnameDE + "test.de", 'r')
-    detectLanguage(file, fr, en, de)
+    file = open(dirnameFR + "test.fr", 'r')
 
     # get only 100 most present elt
     #fr = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-100]
-    # print(fr)
 
     save(fr, de, en)
     fr1, fr2, fr3, de1, de2, de3, en1, en2, en3 = load()
-    
+    print(len(fr1), fr1)
+    print(len(de2), de2)
+    detectLanguage(file, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3)
 
 
 def load():
@@ -66,7 +66,7 @@ def load():
     enF_oneGram.close()
     enF_oneGram.close()
     enF_oneGram.close()
-    return fr_oneGram, fr_twoGram, fr_threeGram, de_oneGram, de_twoGram, de_threeGram, en_oneGram, en_twoGram, en_threeGram
+    return dict(fr_oneGram), dict(fr_twoGram), dict(fr_threeGram), dict(de_oneGram), dict(de_twoGram), dict(de_threeGram), dict(en_oneGram), dict(en_twoGram), dict(en_threeGram)
 
 def save(fr, de, en):
     # saving the n-gram struct from each languages on the disk
@@ -82,23 +82,23 @@ def save(fr, de, en):
     enF_twoGram = open('../saved_data/English_twoGram', 'ab')
     enF_threeGram = open('../saved_data/English_threeGram', 'ab')
 
-    fr_oneGram = sorted(fr.oneGram.items(), key=operator.itemgetter(1))[::-100]
-    fr_twoGram = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-100]
-    fr_threeGram = sorted(fr.threeGram.items(), key=operator.itemgetter(1))[::-100]
+    fr_oneGram = sorted(fr.oneGram.items(), key=operator.itemgetter(1))[::-300]
+    fr_twoGram = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-300]
+    fr_threeGram = sorted(fr.threeGram.items(), key=operator.itemgetter(1))[::-300]
     marshal.dump(fr_oneGram, frF_oneGram)
     marshal.dump(fr_twoGram, frF_twoGram)
     marshal.dump(fr_threeGram, frF_threeGram)
 
-    de_oneGram = sorted(de.oneGram.items(), key=operator.itemgetter(1))[::-100]
-    de_twoGram = sorted(de.twoGram.items(), key=operator.itemgetter(1))[::-100]
-    de_threeGram = sorted(de.threeGram.items(), key=operator.itemgetter(1))[::-100]
+    de_oneGram = sorted(de.oneGram.items(), key=operator.itemgetter(1))[::-300]
+    de_twoGram = sorted(de.twoGram.items(), key=operator.itemgetter(1))[::-300]
+    de_threeGram = sorted(de.threeGram.items(), key=operator.itemgetter(1))[::-300]
     marshal.dump(de_oneGram, deF_oneGram)
     marshal.dump(de_twoGram, deF_twoGram)
     marshal.dump(de_threeGram, deF_threeGram)
 
-    en_oneGram = sorted(en.oneGram.items(), key=operator.itemgetter(1))[::-100]
-    en_twoGram = sorted(en.twoGram.items(), key=operator.itemgetter(1))[::-100]
-    en_threeGram = sorted(en.threeGram.items(), key=operator.itemgetter(1))[::-100]
+    en_oneGram = sorted(en.oneGram.items(), key=operator.itemgetter(1))[::-300]
+    en_twoGram = sorted(en.twoGram.items(), key=operator.itemgetter(1))[::-300]
+    en_threeGram = sorted(en.threeGram.items(), key=operator.itemgetter(1))[::-300]
     marshal.dump(en_oneGram, enF_oneGram)
     marshal.dump(en_twoGram, enF_twoGram)
     marshal.dump(en_threeGram, enF_threeGram)
