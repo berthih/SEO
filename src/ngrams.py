@@ -82,34 +82,26 @@ def detectLanguage(text, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
     countde = 0
     for i in text.oneGram:
         if i in fr1:
-            print(i)
             countfr += 1
         if i in en1:
-            print(i)
             counten += 1
         if i in de1:
-            print(i)
             countde += 1
         #search in french, english and deutch one gram and return the highest rate
     for i in text.twoGram:
         if i in fr2:
-            print(i)
             countfr += 2
         if i in en2:
-            print(i)
             counten += 2
         if i in de2:
-            print(i)
             countde += 2
         # search in french, english and deutch two gram and return the highest rate
     for i in text.threeGram:
         if i in fr3:
             countfr += 3
         if i in en3:
-            print(i)
             counten += 3
         if i in de3:
-            print(i)
             countde += 3
         # search in french, english and deutch three gram and return the highest rate
     print("fr:", countfr, "en:", counten, "de:", countde)
