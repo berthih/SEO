@@ -133,7 +133,7 @@ def predictEndOfWord(text, lang1):
 
     for i in possible:
         v = i[1] / score * 100
-        print(i[0], v, "%")
+        print('"' + i[0] + '" with ' + str(v) + "%")
 
     return possible
 
@@ -161,7 +161,7 @@ def predictWord(text, lang1, lang2, lang3):
     possibilities = sorted(possibilities, key=lambda x: x[1], reverse=True)
 
     for i in possibilities:
-        print(i[0] + ' with ' + str('%.5f'%(100 * i[1] / count)) + '%')
+        print('"' + i[0] + '" with ' + str('%.5f'%(100 * i[1] / count)) + '%')
 
 
 
