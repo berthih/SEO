@@ -130,17 +130,29 @@ def predictEndOfWord(text, lang1):
 
 
 def predictWord(text, lang1, lang2, lang3):
-    #print(lang3)
+    possibilities = []
+
     keyList = list(text.twoGram.keys())
     last2Gram = keyList[len(keyList) - 1]
     print('Input text is ending with: ' + last2Gram)
-    possibilities = []
+
     for i in list(lang3.keys()):
-        if last2Gram in i:
+        if i.startswith(last2Gram):
             possibilities.append((i, lang3[i]))
+
+    keyList = list(text.oneGram.keys())
+    last1Gram = keyList[len(keyList) - 1]
+
+    for i in list(lang2.keys()):
+        if i.startswith(last1Gram):
+            possibilities.append((i, lang2[i]))
+    count = 0
+    for i in possibilities:
+        count += i[1]
+
     print('possibilities are:')
     for i in possibilities:
-        print(i)
+        print(i[0] + ' with ' + str('%.5f'%(i[1] / count)) + '%')
 
 
 

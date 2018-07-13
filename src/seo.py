@@ -14,14 +14,18 @@ def main():
 
     parse = input('Do you wish to re-create the n-gram by parsing the files in /ressources? (y/n)\n')
 
-
     if parse == 'y':
         fr = parseLanguage(dirnameFR)
         en = parseLanguage(dirnameEN)
         de = parseLanguage(dirnameDE)
         save(fr, de, en)
 
+    inputFile = ''
     inputFile = input('Enter an input file to detect language from:\n')
+
+    while not(os.path.isfile(inputFile)):
+        inputFile = input('Please, enter a valid file:\n')
+
     file = open(inputFile, 'r')
 
     fr1, fr2, fr3, de1, de2, de3, en1, en2, en3 = load()
