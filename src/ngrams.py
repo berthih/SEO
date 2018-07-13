@@ -115,10 +115,13 @@ def detectLanguage(text, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
     print("fr:", countfr, "en:", counten, "de:", countde)
     lang = max(countde, counten, countfr)
     if lang == countfr:
+        print('language detected is French')
         return fr1, fr2, fr3
     if lang == countde:
+        print('language detected is French')
         return de1, de2, de3
     if lang == counten:
+        print('language detected is French')
         return en1, en2, en3
     #compare all rates and return langage detected
 
