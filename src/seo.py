@@ -32,6 +32,7 @@ def main():
     text = parseFile(file, text)
     lang1, lang2, lang3 = detectLanguage(text, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3)
     predictWord(text, lang1, lang2, lang3)
+    predictEndOfWord(text, lang1)
 
 def load():
     # saving the n-gram struct from each languages on the disk

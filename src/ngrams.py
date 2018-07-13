@@ -56,7 +56,7 @@ def parseFile(file, lang):
         lang.twoGram = ngrams(line, 2, lang.twoGram)
         lang.threeGram = ngrams(line, 3, lang.threeGram)
         # because potato pc, taking only 20 lines
-        if (i > 50000):
+        if (i > 100000):
             break
         i += 1
     return lang
@@ -117,6 +117,17 @@ def detectLanguage(text, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
         print('language detected is French')
         return en1, en2, en3
     #compare all rates and return langage detected
+
+
+def predictEndOfWord(text, lang1):
+    lastword = list(text.oneGram.keys())[-1].strip()
+    possible = []
+    for l in lang1:
+        if l.startswith(lastword):
+            possible.append(l)
+    print(possible)
+    return possible
+
 
 def predictWord(text, lang1, lang2, lang3):
     #print(lang3)
