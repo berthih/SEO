@@ -15,7 +15,7 @@ class language:
       self.twoGram = twoGram
       self.threeGram = threeGram
 
-
+# Used for TF-IDF
 class gramOccurence:
     str = ""
     value = 0
@@ -62,7 +62,7 @@ def parseFile(file, lang):
     return lang
 
 
-# count occurence given a directory and a n-gram
+# count occurence given a directory and a n-gram, used for TF-IDF
 def countOccur(dirname, ngram):
     occurList = []
     for elt in ngram:
@@ -105,7 +105,7 @@ def detectLanguage(text, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
         if i in de3:
             countde += 3
         # search in french, english and deutch three gram and return the highest rate
-    print("fr:", countfr, "en:", counten, "de:", countde)
+    # print("fr:", countfr, "en:", counten, "de:", countde)
     lang = max(countde, counten, countfr)
     if lang == countfr:
         print('language detected is French')
@@ -120,30 +120,34 @@ def detectLanguage(text, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
 
 
 def predictEndOfWord(text, lang1):
-    lastword = list(text.oneGram.keys())[-1].strip()
+    print('\n Predicting the end of the last word: \n')
+    lastword = list(text.oneGram.keys())[-1]
     possible = []
     score = 0
     for l in lang1:
         if l.startswith(lastword):
             score += lang1.get(l)
-            possible.append(l)
-    print(score)
+            possible.append((l, lang1.get(l)))
+
+    possible = sorted(possible, key=lambda x: x[1], reverse=True)
+
     for i in possible:
-        v = lang1.get(i) / score * 100
-        print(i, v, "%")
+        v = i[1] / score * 100
+        print(i[0], v, "%")
 
     return possible
 
 
 def predictWord(text, lang1, lang2, lang3):
+    print('\n Predicting the next word of the last sentence: \n')
     possibilities = []
-
+    count = 0
     keyList = list(text.twoGram.keys())
     last2Gram = keyList[len(keyList) - 1]
-    print('Input text is ending with: ' + last2Gram)
 
     for i in list(lang3.keys()):
         if i.startswith(last2Gram):
+            count += lang3[i]
             possibilities.append((i, lang3[i]))
 
     keyList = list(text.oneGram.keys())
@@ -151,13 +155,11 @@ def predictWord(text, lang1, lang2, lang3):
 
     for i in list(lang2.keys()):
         if i.startswith(last1Gram):
+            count += lang2[i]
             possibilities.append((i, lang2[i]))
-    count = 0
-    for i in possibilities:
-        count += i[1]
 
-    possibilities = sorted(possibilities, key=lambda x: x[1])
-    print('possibilities are:')
+    possibilities = sorted(possibilities, key=lambda x: x[1], reverse=True)
+
     for i in possibilities:
         print(i[0] + ' with ' + str('%.5f'%(100 * i[1] / count)) + '%')
 
