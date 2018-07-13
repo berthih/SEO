@@ -156,9 +156,10 @@ def predictWord(text, lang1, lang2, lang3):
     for i in possibilities:
         count += i[1]
 
+    possibilities = sorted(possibilities, key=lambda x: x[1])
     print('possibilities are:')
     for i in possibilities:
-        print(i[0] + ' with ' + str('%.5f'%(i[1] / count)) + '%')
+        print(i[0] + ' with ' + str('%.5f'%(100 * i[1] / count)) + '%')
 
 
 
