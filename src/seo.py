@@ -11,7 +11,7 @@ def main():
     dirnameFR = '../ressources/FR/'
     dirnameDE = '../ressources/DE/'
 
-    parse = input('Do you wish to re-create the n-gram by parsing the files in /ressources (Recommanded to do the first time)? (y/n)\n')
+    parse = input('Do you wish to re-create the n-gram by parsing the files in /ressources (Recommended to do the first time)? (y/n)\n')
     if parse == 'y':
         fr = parseLanguage(dirnameFR)
         en = parseLanguage(dirnameEN)

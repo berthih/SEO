@@ -9,7 +9,12 @@ It should be built this way:
 
 SEO
 |
--- Ressources
+|
+-- saved_data
+|  |
+|  -- n-grams data goes here once saved
+|
+-- ressources
    |
    --FR
    | |
