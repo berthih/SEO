@@ -29,14 +29,15 @@ class gramOccurence:
 
 # return the n-gram of a string
 def ngrams(input, n, output):
-  if (input == ''):
+    input = input.rstrip()
+    if (input == ''):
+        return output
+    input = input.split(' ')
+    for i in range(len(input)-n+1):
+        g = ' '.join(input[i:i+n])
+        output.setdefault(g, 0)
+        output[g] += 1
     return output
-  input = input.split(' ')
-  for i in range(len(input)-n+1):
-    g = ' '.join(input[i:i+n])
-    output.setdefault(g, 0)
-    output[g] += 1
-  return output
 
 
 # return the 1-gram, 2-gram and 3-gram of all the files in a directory (that represents a language)
@@ -121,12 +122,14 @@ def predictWord(text, lang1, lang2, lang3):
     #print(lang3)
     keyList = list(text.twoGram.keys())
     last2Gram = keyList[len(keyList) - 1]
-    # to remove \n
-    last2Gram = last2Gram[:-1]
-    print(last2Gram)
+    print('Input text is ending with: ' + last2Gram)
+    possibilities = []
     for i in list(lang3.keys()):
         if last2Gram in i:
-            print('A match is: ' + i)
+            possibilities.append((i, lang3[i]))
+    print('possibilities are:')
+    for i in possibilities:
+        print(i)
 
 
 

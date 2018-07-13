@@ -19,14 +19,10 @@ def main():
         fr = parseLanguage(dirnameFR)
         en = parseLanguage(dirnameEN)
         de = parseLanguage(dirnameDE)
+        save(fr, de, en)
 
     inputFile = input('Enter an input file to detect language from:\n')
     file = open(inputFile, 'r')
-
-    file = open(dirnameFR + "test.fr", 'r')
-    file2 = open(dirnameDE + "test.de", 'r')
-    # get only 100 most present elt
-    #fr = sorted(fr.twoGram.items(), key=operator.itemgetter(1))[::-100]
 
     fr1, fr2, fr3, de1, de2, de3, en1, en2, en3 = load()
 
