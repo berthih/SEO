@@ -1,5 +1,7 @@
 This project was done by Hadrien Berthier and Korim Daoud, there is no third member.
 
+Managed by Farah Nedjadi.
+
 ## Ressources ##
 
 The ressources directory is supposed to be filled with files from http://www.statmt.org/europarl/
