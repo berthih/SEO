@@ -122,10 +122,16 @@ def detectLanguage(text, fr1, fr2, fr3, de1, de2, de3, en1, en2, en3):
 def predictEndOfWord(text, lang1):
     lastword = list(text.oneGram.keys())[-1].strip()
     possible = []
+    score = 0
     for l in lang1:
         if l.startswith(lastword):
+            score += lang1.get(l)
             possible.append(l)
-    print(possible)
+    print(score)
+    for i in possible:
+        v = lang1.get(i) / score * 100
+        print(i, v, "%")
+
     return possible
 
 
